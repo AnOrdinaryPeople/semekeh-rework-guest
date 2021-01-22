@@ -1,0 +1,14 @@
+.fade-enter-active, .fade-leave-active{ transition: all .3s }
+.fade-enter, .fade-leave-to{ opacity: 0 }
+
+#app-main{
+    transition: all ease .25s;
+    min-height: 50vh;
+}
+
+.line{
+    height: 2px;
+    width: 100%;
+    background-color: var(--bpi-yellow);
+    margin-bottom: 20px;
+}

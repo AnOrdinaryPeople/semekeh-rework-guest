@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'mixin';
+
+@import '~bootstrap/scss/bootstrap';
+
+@import '~swiper/swiper.scss';
+@import '~swiper/components/pagination/pagination.scss';
+
+@import 'navbar';
+@import 'footer';
+@import 'slider';
+@import 'markdown';
+@import 'welcome';
+
+@import '../css/app.css';

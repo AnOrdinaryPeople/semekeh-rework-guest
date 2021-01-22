@@ -1,0 +1,179 @@
+.section-heading {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 40px;
+
+    span{
+        color: $bpiBlue;
+        font-size: 27px;
+        font-weight: 700;
+    }
+
+    p{
+        color: $bpiYelloww;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+}
+
+.swiper-bpi-video > .swiper-wrapper {
+    justify-content: center !important;
+
+    @media screen and (max-width: 1024px) {
+        justify-content: inherit !important;
+    }
+}
+
+.img-video > img{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    cursor: pointer;
+    object-fit: inherit;
+}
+
+.about-content{
+    padding: 90px 50px 12px 50px !important;
+    font-size: 15px;
+    line-height: 20px;
+
+    .about-content-title{
+        color: $bpiBlue;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .about-content-sub{
+        font-size: 24px;
+        font-weight: 500;
+    }
+}
+
+.about-img{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 600px;
+}
+
+.agenda-card{
+    color: $white;
+    background-color: $bpiBlue !important;
+    border: none !important;
+    overflow: hidden;
+
+    img{
+        z-index: 1;
+        opacity: .6;
+        max-height: 250px;
+        transition: all 0.35s ease-in-out;
+    }
+
+    span.card-title{
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    p.card-subtitle{
+        color: $bpiYellow !important;
+    }
+
+    &:hover{
+        img{
+            opacity: .4;
+            transform: scale(1.2);
+        }
+
+        .agenda-footer{
+            bottom: 30px;
+        }
+    }
+}
+
+.agenda-footer{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    -webkit-transition: bottom 0.35s;
+    transition: bottom 0.35s;
+
+    span{
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--bpi-yellow);
+    }
+}
+
+.single-thumb-one,
+.single-thumb-two{
+    .card-img-thumb{
+        position: relative;
+        z-index: 1;
+
+        img{
+            transition-duration: 1500ms;
+            height: 310px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.single-header{
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.single-thumb-two{
+    position: relative;
+    background-color: $white;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    transition: transform .2s;
+}
+
+.single-info {
+    color: var(--dark);
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.single-date{
+    background-color: $bpiBlue;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 22;
+    top: -30px;
+    left: 30px;
+
+    p{
+        font-size: 18px;
+        color: $bpiYellow;
+        text-align: center;
+    }
+}
+
+.company-slider{
+    background: transparent !important;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.company-img > img{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+    cursor: pointer;
+    object-fit: inherit;
+}
+
+@media (max-width: 767px){
+    .single-card{
+        padding: 10px 50px 10px 50px;
+    }
+}

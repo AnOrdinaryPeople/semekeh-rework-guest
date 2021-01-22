@@ -1,0 +1,27 @@
+@mixin px($val: 0, $vall: $val){
+    padding-left: $val;
+    padding-right: $vall;
+}
+
+@mixin py($val: 0, $vall: $val){
+    padding-top: $val;
+    padding-bottom: $vall;
+}
+
+@mixin mx($val: 0, $vall: $val){
+    margin-left: $val;
+    margin-right: $val;
+}
+
+@mixin my($val: 0, $vall: $val){
+    margin-top: $val;
+    margin-bottom: $vall;
+}
+
+@mixin navBoxShadow {
+    -webkit-box-shadow: 0px 2px 10px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 10px -7px rgba(0,0,0,0.75);
+    -o-box-shadow: 0px 2px 10px -7px rgba(0,0,0,0.75);
+    -ms-box-shadow: 0px 2px 10px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 10px -7px rgba(0,0,0,0.75);
+}

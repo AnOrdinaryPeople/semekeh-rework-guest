@@ -1,0 +1,15 @@
+$body-bg: #f8fafc;
+
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+$primary: #2b77b6;
+$bpiBlue: #022c43;
+$bpiYellow: #ffd700;
+$bpiYelloww: #7b7515;
+
+$theme-colors: (
+    bpi-blue: $bpiBlue,
+    bpi-yellow: $bpiYellow,
+    bpi-yellow-two: $bpiYelloww,
+) !default;
