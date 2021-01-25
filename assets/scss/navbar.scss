@@ -45,7 +45,7 @@
     }
 }
 
-.dropdown-item.active{
+.dropdown-item.nuxt-link-active{
     color: $bpiYellow !important;
     background-color: $bpiBlue !important;
 }
@@ -83,7 +83,7 @@
                 padding: 40px 10px 52px 10px;
             }
 
-            .active{
+            .nuxt-link-active{
                 color: $bpiYellow;
                 cursor: pointer;
             }
@@ -135,11 +135,11 @@
 
 #app-mobile-nav{
     ul li {
-        .active{
+        .nuxt-link-active{
             color: $bpiYellow;
         }
 
-        div .active{
+        div .nuxt-link-active{
             color: $bpiYellow;
         }
     }

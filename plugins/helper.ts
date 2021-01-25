@@ -7,28 +7,24 @@ Vue.mixin({
     }),
     methods: {
         sauce(path: string): string {
-            return process.env.appURL + '/' + path
+            return (this as any).appURL + '/' + path
         },
-        storage(key: string, replace: boolean, value: object | null): object | boolean | null {
-            const data = localStorage.getItem(key),
-                set = () => localStorage.setItem(key, btoa(JSON.stringify(value)))
+        rng(min = 20, max = 80, isRng = false): number | boolean {
+            const brrr = (a: number) => Math.floor(Math.random() * a)
 
-            if (data) {
-                if (replace) {
-                    set()
+            return isRng
+                ? brrr(max) > brrr(100 - max)
+                : brrr(max) + min
+        },
+        setMetaHead(obj: any) {
+            const head: any = document.head,
+                title = `${obj.title} | ${(this as any).appName}`
 
-                    return true
-                }
-                return JSON.parse(atob(data))
-            } else {
-                if (value) {
-                    set()
-
-                    return true
-                }
-            }
-
-            return null
+            document.title = title
+            head.querySelector('meta[name=apple-mobile-web-app-title]').content = title
+            head.querySelector('meta[name="og:title"]').content = title
+            head.querySelector('meta[name="description"]').content = obj.desc
+            head.querySelector('meta[name="og:description"]').content = obj.desc
         }
     }
 })

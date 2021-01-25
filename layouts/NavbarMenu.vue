@@ -26,9 +26,16 @@
                 <a
                     class="dropbtn"
                     href="#"
-                    @click.prevent
+                    @click.prevent="clickNavMobile('toggleA')"
                     v-b-toggle="cls ? 'app-nav-media' : 'app-nav-media-mobile'"
-                >{{ $t('media') }}</a>
+                >
+                    {{ $t('media') }}
+                    <fa
+                        v-if="cls === null"
+                        icon="chevron-down"
+                        :class="`float-right iconer ${toggleA ? 'icon-rotate' : ''}`"
+                    />
+                </a>
 
                 <div v-if="cls" id="app-nav-media" class="dropdown-content">
                     <nuxt-link
@@ -51,9 +58,16 @@
                 <a
                     class="dropbtn"
                     href="#"
-                    @click.prevent
+                    @click.prevent="clickNavMobile('toggleB')"
                     v-b-toggle="cls ? 'app-nav-study' : 'app-nav-study-mobile'"
-                >{{ $t('study') }}</a>
+                >
+                    {{ $t('study') }}
+                    <fa
+                        v-if="cls === null"
+                        icon="chevron-down"
+                        :class="`float-right iconer ${toggleB ? 'icon-rotate' : ''}`"
+                    />
+                </a>
 
                 <div v-if="cls" id="app-nav-study" class="dropdown-content">
                     <nuxt-link
@@ -76,9 +90,16 @@
                 <a
                     class="dropbtn"
                     href="#"
-                    @click.prevent
+                    @click.prevent="clickNavMobile('toggleC')"
                     v-b-toggle="cls ? 'app-nav-prof' : 'app-nav-prof-mobile'"
-                >{{ $t('profile') }}</a>
+                >
+                    {{ $t('profile') }}
+                    <fa
+                        v-if="cls === null"
+                        icon="chevron-down"
+                        :class="`float-right iconer ${toggleC ? 'icon-rotate' : ''}`"
+                    />
+                </a>
 
                 <div v-if="cls" id="app-nav-prof" class="dropdown-content">
                     <nuxt-link
@@ -128,7 +149,15 @@ export default Vue.extend({
             "extracurricular",
         ],
         media: ["agenda", "prestations", "galleries"],
+        toggleA: false,
+        toggleB: false,
+        toggleC: false,
     }),
+    methods: {
+        clickNavMobile(target: string) {
+            (this as any)[target] = !(this as any)[target];
+        },
+    },
     computed: {
         ...mapGetters(["nav"]),
     },

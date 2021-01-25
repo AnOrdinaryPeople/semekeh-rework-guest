@@ -46,7 +46,7 @@
                                     fluid
                                     width="500"
                                     height="320"
-                                    :src="sauce(foot.agenda.banner)"
+                                    :src="sauce('storage/' + foot.agenda.banner)"
                                     :alt="appName"
                                 />
                             </b-col>

@@ -22,7 +22,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    noscript: [{ innerHTML: `We're sorry but ${process.env.MIX_APP_NAME} doesn't work properly without JavaScript enabled. Please enable it to continue.` }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -32,7 +33,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~plugins/helper.ts'
+    '~plugins/helper.ts',
+    '~plugins/icon.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

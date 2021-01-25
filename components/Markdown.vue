@@ -1,10 +1,10 @@
 <template>
-    <vue-showdown v-if="ext.length > 0" :markdown="content" :extensions="['result', ext]" />
+    <vue-showdown v-if="content" :markdown="content" :extensions="['result']" />
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 import VueShowdown from "vue-showdown";
 
 const obj: any = {
@@ -45,22 +45,15 @@ export default Vue.extend({
     props: {
         content: String,
     },
-    mounted() {
-        console.log(this.ext);
-
-        setTimeout(() => {
-            console.log(this.ext);
-        }, 2500);
-    },
-    computed: {
-        ext() {
-            return this.keys.map((i: any) => ({
-                type: "lang",
-                regex: new RegExp(i.key, "g"),
-                replace: i.value,
-            }));
-        },
-        ...mapGetters(["keys"]),
-    },
+    // computed: {
+    //     ext() {
+    //         return this.keys.map((i: any) => ({
+    //             type: "lang",
+    //             regex: new RegExp(i.key, "g"),
+    //             replace: i.value,
+    //         }));
+    //     },
+    //     ...mapGetters(["keys"]),
+    // },
 });
 </script>

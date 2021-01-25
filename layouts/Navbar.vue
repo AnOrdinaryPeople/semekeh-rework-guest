@@ -50,7 +50,7 @@
                                 fluid
                                 width="400"
                                 height="69"
-                                src="img/logo.webp"
+                                src="/img/logo.webp"
                                 :alt="appName"
                             />
                         </nuxt-link>
@@ -64,7 +64,7 @@
         <div class="navbar-responsive col-md-12">
             <div class="logo">
                 <nuxt-link to="/">
-                    <b-img fluid width="350" height="60" src="img/logo.webp" :alt="appName" />
+                    <b-img fluid width="350" height="60" src="/img/logo.webp" :alt="appName" />
                 </nuxt-link>
             </div>
             <div class="menu-responsive" :class="toggle ? 'change' : ''" v-b-toggle:app-mobile-nav>

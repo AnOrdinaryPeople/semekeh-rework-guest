@@ -12,3 +12,11 @@
     background-color: var(--bpi-yellow);
     margin-bottom: 20px;
 }
+
+.iconer{
+    transition: all ease .3s;
+}
+
+.icon-rotate{
+    transform: rotate(180deg);
+}

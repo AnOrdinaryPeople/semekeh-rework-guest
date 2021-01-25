@@ -1,7 +1,11 @@
 <template>
     <!-- optional chaining at template available in vue 3 -,-" -->
-    <div v-if="welcome.section && welcome.section.length > 0">
-        <swiper ref="carousel" :options="carouselConfig">
+    <div>
+        <swiper
+            v-if="welcome.carousel && welcome.carousel.length"
+            ref="carousel"
+            :options="carouselConfig"
+        >
             <swiper-slide
                 v-for="(i, k) in welcome.carousel"
                 :key="k"
@@ -13,7 +17,13 @@
                         <p>{{ i.description }}</p>
                     </div>
                     <div class="slider-img">
-                        <b-img fluid :src="sauce(i.url)" width="100%" height="100%" :alt="i.title" />
+                        <b-img
+                            fluid
+                            :src="sauce('storage/' + i.url)"
+                            width="100%"
+                            height="100%"
+                            :alt="i.title"
+                        />
                     </div>
                 </div>
                 <div v-else-if="i.type === 2" class="slider-content-two">
@@ -27,7 +37,7 @@
 
                 <b-img
                     :class="i.type === 1 ? 'slider-img-back' : ''"
-                    :src="i.type === 1 ? 'img/back-slider.webp' : sauce(i.url)"
+                    :src="i.type === 1 ? '/img/back-slider.webp' : sauce('storage/' + i.url)"
                     width="100%"
                     height="100%"
                     :alt="i.title || appName"
@@ -51,9 +61,12 @@
                 <fa icon="chevron-right" />
             </div>
         </swiper>
+        <div v-else>
+            <b-skeleton-img v-if="!welcome.caoursel" no-aspect height="520px" />
+        </div>
 
         <div v-if="welcome.video && welcome.video.length" class="bpi-video">
-            <div class="container">
+            <b-container>
                 <b-row>
                     <b-col cols="12">
                         <div class="section-heading">
@@ -69,15 +82,34 @@
                             <b-img
                                 width="240"
                                 height="150"
-                                :src="sauce(i.thumbnail)"
+                                :src="sauce('storage/' + i.thumbnail)"
                                 :alt="appName"
                                 @click="openVideo(i.video, i.thumbnail)"
                             />
                         </swiper-slide>
                     </swiper>
                 </b-row>
-            </div>
+            </b-container>
         </div>
+        <b-container v-else class="bpi-video">
+            <div v-if="!welcome.video">
+                <b-row>
+                    <b-col sm="3"></b-col>
+                    <b-col sm="6">
+                        <b-skeleton width="60%" class="mx-auto" />
+                        <b-skeleton width="50%" class="mx-auto mb-5" />
+                    </b-col>
+                </b-row>
+                <b-row class="justify-content-center">
+                    <b-col sm="6" lg="3">
+                        <b-skeleton-img height="150px" />
+                    </b-col>
+                    <b-col sm="6" lg="3">
+                        <b-skeleton-img height="150px" />
+                    </b-col>
+                </b-row>
+            </div>
+        </b-container>
 
         <b-container v-if="welcome.about" fluid>
             <b-row>
@@ -92,8 +124,21 @@
                     class="about-img img-fluid"
                     sm="12"
                     lg="5"
-                    :style="`background-image: url(${sauce(welcome.about.url)})`"
+                    :style="`background-image: url(${sauce('storage/' + welcome.about.url)})`"
                 />
+            </b-row>
+        </b-container>
+        <b-container v-else fluid>
+            <b-row v-if="!welcome.about">
+                <b-col class="about-content" sm="12" lg="6">
+                    <b-skeleton width="40%" />
+                    <b-skeleton width="60%" class="mb-5" />
+
+                    <skeleton />
+                </b-col>
+                <b-col sm="12" lg="6">
+                    <b-skeleton-img no-aspect height="600px" />
+                </b-col>
             </b-row>
         </b-container>
 
@@ -115,7 +160,7 @@
                                     class="card-img"
                                     width="450"
                                     height="100%"
-                                    :src="sauce(welcome.agenda.banner)"
+                                    :src="sauce('storage/' + welcome.agenda.banner)"
                                     :alt="appName"
                                 />
                                 <div class="card-body card-img-overlay">
@@ -137,6 +182,19 @@
                 </b-col>
             </b-row>
         </b-container>
+        <b-container v-else>
+            <div v-if="!welcome.agenda" class="my-5">
+                <b-row>
+                    <b-col sm="3"></b-col>
+                    <b-col sm="6">
+                        <b-skeleton width="60%" class="mx-auto" />
+                        <b-skeleton width="50%" class="mx-auto mb-5" />
+
+                        <b-skeleton width="450px" height="200px" class="mx-auto" />
+                    </b-col>
+                </b-row>
+            </div>
+        </b-container>
 
         <b-container v-if="welcome.prestation && welcome.prestation.length" class="my-4">
             <b-row>
@@ -155,7 +213,7 @@
                                 fluid
                                 width="450"
                                 height="350"
-                                :src="sauce(i.url)"
+                                :src="sauce('storage/' + i.url)"
                                 :alt="i.title"
                             />
                         </div>
@@ -177,6 +235,27 @@
                     </div>
                 </b-col>
             </b-row>
+        </b-container>
+        <b-container v-else>
+            <div v-if="!welcome.prestation">
+                <b-row>
+                    <b-col sm="3"></b-col>
+                    <b-col sm="6">
+                        <b-skeleton width="60%" class="mx-auto" />
+                        <b-skeleton width="50%" class="mx-auto" />
+                    </b-col>
+                </b-row>
+                <b-row class="my-5">
+                    <b-col v-for="(i, k) in 3" :key="k" sm="12" lg="4">
+                        <b-card no-body img-top>
+                            <b-skeleton-img card-img="top" no-aspect height="350px" />
+                            <b-card-body>
+                                <skeleton />
+                            </b-card-body>
+                        </b-card>
+                    </b-col>
+                </b-row>
+            </div>
         </b-container>
 
         <b-container v-if="welcome.alumni && welcome.alumni.length" fluid class="bg-bpi-blue py-4">
@@ -204,7 +283,7 @@
                                     fluid
                                     width="420"
                                     height="350"
-                                    :src="sauce(i.url)"
+                                    :src="sauce('storage/' + i.url)"
                                     :alt="i.name"
                                 />
                             </div>
@@ -228,6 +307,27 @@
                                 </div>
                             </div>
                         </div>
+                    </b-col>
+                </b-row>
+            </b-container>
+        </b-container>
+        <b-container v-else fluid :class="!welcome.alumni ? 'bg-bpi-blue py-4' : ''">
+            <b-container v-if="!welcome.alumni">
+                <b-row>
+                    <b-col sm="3"></b-col>
+                    <b-col sm="6">
+                        <b-skeleton width="60%" class="mx-auto" />
+                        <b-skeleton width="50%" class="mx-auto" />
+                    </b-col>
+                </b-row>
+                <b-row class="my-5">
+                    <b-col v-for="(i, k) in 3" :key="k" sm="12" lg="4">
+                        <b-card no-body img-top>
+                            <b-skeleton-img card-img="top" no-aspect height="350px" />
+                            <b-card-body>
+                                <skeleton />
+                            </b-card-body>
+                        </b-card>
                     </b-col>
                 </b-row>
             </b-container>
@@ -257,15 +357,40 @@
             <swiper ref="company" :options="companyConfig">
                 <swiper-slide v-for="(i, k) in welcome.company" :key="k" class="company-slider">
                     <a class="company-img" :href="i.link" target="_blank" rel="noopener">
-                        <b-img fluid width="450" height="75" :src="sauce(i.url)" :alt="appName" />
+                        <b-img
+                            fluid
+                            width="450"
+                            height="75"
+                            :src="sauce('storage/' + i.url)"
+                            :alt="appName"
+                        />
                     </a>
                 </swiper-slide>
             </swiper>
         </b-container>
+        <b-container v-else class="bpi-video">
+            <div v-if="!welcome.company">
+                <b-row>
+                    <b-col sm="3"></b-col>
+                    <b-col sm="6">
+                        <b-skeleton width="60%" class="mx-auto" />
+                        <b-skeleton width="50%" class="mx-auto mb-5" />
+                    </b-col>
+                </b-row>
+                <b-row class="justify-content-center">
+                    <b-col sm="6" lg="3">
+                        <b-skeleton-img height="150px" />
+                    </b-col>
+                    <b-col sm="6" lg="3">
+                        <b-skeleton-img height="150px" />
+                    </b-col>
+                </b-row>
+            </div>
+        </b-container>
 
         <b-modal id="video-modal" :title="$t('video')" hide-footer>
-            <b-embed controls type="video" :poster="sauce(modalVideo.thumbnail)">
-                <source :src="sauce(modalVideo.video)" />
+            <b-embed controls type="video" :poster="sauce('storage/' + modalVideo.thumbnail)">
+                <source :src="sauce('storage/' + modalVideo.video)" />
             </b-embed>
         </b-modal>
     </div>
@@ -281,9 +406,6 @@ import { mapGetters } from "vuex";
 SwiperCore.use([Pagination, Autoplay]);
 
 export default Vue.extend({
-    head: {
-        link: [{ rel: "canonical", href: window.location.href }],
-    },
     components: {
         Swiper,
         SwiperSlide,
@@ -376,10 +498,14 @@ export default Vue.extend({
     // setup() only available in vue 3 --"
     computed: {
         swiper() {
-            return this.$refs.carousel?.$swiper;
+            const swiperRef: any = this.$refs.carousel;
+
+            return swiperRef?.$swiper;
         },
         sComp() {
-            return this.$refs.company?.$swiper;
+            const swiperRef: any = this.$refs.company;
+
+            return swiperRef?.$swiper;
         },
         ...mapGetters(["welcome"]),
     },
