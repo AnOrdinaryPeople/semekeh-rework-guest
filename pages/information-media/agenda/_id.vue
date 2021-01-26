@@ -81,7 +81,7 @@
                 </b-col>
             </b-row>
         </b-container>
-        <b-container v-else class="text-center p-5">
+        <b-container v-else class="my-5">
             <b-row>
                 <b-col sm="12" md="8">
                     <b-skeleton-img height="320px" />

@@ -34,3 +34,7 @@
 .page-link{
     color: var(--bpi-blue) !important;
 }
+
+.h-75-vh{
+    height: 75vh;
+}

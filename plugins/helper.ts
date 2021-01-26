@@ -10,11 +10,11 @@ Vue.mixin({
             return (this as any).appURL + '/' + path
         },
         rng(min = 20, max = 80, isRng = false): number | boolean {
-            const brrr = (a: number) => Math.floor(Math.random() * a)
+            const brrr = (a: number) => Math.floor(Math.random() * a) + min
 
             return isRng
                 ? brrr(max) > brrr(100 - max)
-                : brrr(max) + min
+                : brrr(max)
         },
         setMetaHead(obj: any) {
             const head: any = document.head,

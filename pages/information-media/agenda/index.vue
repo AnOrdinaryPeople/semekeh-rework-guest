@@ -31,6 +31,7 @@
                     </router-link>
                 </b-col>
             </b-row>
+
             <b-pagination
                 v-if="data.length > 9"
                 class="mt-3"
@@ -40,7 +41,7 @@
                 aria-controls="agenda-list"
             />
         </b-container>
-        <b-container v-else class="text-center p-5">
+        <b-container v-else class="my-5">
             <b-row>
                 <b-col v-for="(i, k) in 8" :key="k" sm="12" md="6" lg="4" class="mb-4">
                     <b-skeleton-img no-aspect height="230px" />
