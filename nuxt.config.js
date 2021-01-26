@@ -99,6 +99,7 @@ export default {
     manifest: {
       name: process.env.MIX_META_AUTHOR,
       short_name: process.env.MIX_APP_NAME,
+      description: process.env.MIX_META_DESCRIPTION,
       background_color: process.env.MIX_MANIFEST_BACKGROUND
     }
   }

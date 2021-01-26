@@ -406,6 +406,9 @@ import { mapGetters } from "vuex";
 SwiperCore.use([Pagination, Autoplay]);
 
 export default Vue.extend({
+    head: {
+        title: process.env.appName,
+    },
     components: {
         Swiper,
         SwiperSlide,

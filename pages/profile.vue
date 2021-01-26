@@ -7,7 +7,7 @@
             :sub-title="content.subtitle ? content.subtitle : null"
         />
 
-        <nuxt-child keep-alive @ready="update" />
+        <nuxt-child @ready="update" />
     </div>
 </template>
 

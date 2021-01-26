@@ -14,10 +14,7 @@
                             <span v-if="k + 1 === bread.length">
                                 <strong class="text-decoration-underline">{{ i.name }}</strong>
                             </span>
-                            <span
-                                v-else-if="i.disable"
-                                class="text-white cursor-default"
-                            >{{ i.name }}</span>
+                            <span v-else-if="i.disable" class="breadcrumb-disable">{{ i.name }}</span>
                             <span v-else>
                                 <router-link class="text-white" :to="i.to">{{ i.name }}</router-link>
                             </span>
@@ -31,6 +28,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 export default Vue.extend({
     props: {
         title: {

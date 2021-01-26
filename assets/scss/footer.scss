@@ -1,6 +1,6 @@
 .footer{
     padding: 0;
-    background-color: $bpiBlue;
+    background-color: var(--bpi-blue);
 
     .back-footer{
         .container{
@@ -10,7 +10,7 @@
         .footer-header{
             font-size: 22px;
             font-weight: 600;
-            color: $white;
+            color: var(--white);
         }
     }
 
@@ -23,17 +23,17 @@
     }
 
     .copyright{
-        background-color: $bpiYellow;
+        background-color: var(--bpi-yellow);
         text-align: center;
 
         p{
-            color: $bpiBlue;
+            color: var(--bpi-blue);
             padding: 15px;
             margin: 0;
         }
 
         a{
-            color: $bpiBlue;
+            color: var(--bpi-blue);
             text-decoration: none;
             transition: .3s ease all;
 

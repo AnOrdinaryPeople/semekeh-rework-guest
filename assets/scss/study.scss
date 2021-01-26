@@ -1,0 +1,31 @@
+.detail-img img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    left: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.detail-post {
+    width: 100%;
+    padding: 54px 40px 12px 40px;
+    right: 0;
+    top: 280px;
+    z-index: 1;
+    position: relative;
+    background-color: var(--white);
+    margin-bottom: 300px;
+    border-radius: .5rem;
+}
+
+.detail-label {
+    background-color: var(--bpi-blue);
+    position: absolute;
+    border-radius: 6px;
+    top: -32px;
+    color: var(--white);
+    width: 170px;
+    text-align: center;
+    padding: 22px 12px 2px 12px;
+}

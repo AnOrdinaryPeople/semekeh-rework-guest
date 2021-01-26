@@ -129,7 +129,7 @@ export default Vue.extend({
                 const g = this.profile["p" + this.id];
 
                 if (g)
-                    new Promise((dispatch) =>
+                    await new Promise((dispatch) =>
                         setTimeout(() => {
                             dispatch(this.setData(g));
                         }, 250)

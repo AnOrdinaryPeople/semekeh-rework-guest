@@ -23,8 +23,11 @@ Vue.mixin({
             document.title = title
             head.querySelector('meta[name=apple-mobile-web-app-title]').content = title
             head.querySelector('meta[name="og:title"]').content = title
-            head.querySelector('meta[name="description"]').content = obj.desc
-            head.querySelector('meta[name="og:description"]').content = obj.desc
+
+            if (obj.desc) {
+                head.querySelector('meta[name="description"]').content = obj.desc
+                head.querySelector('meta[name="og:description"]').content = obj.desc
+            }
         }
     }
 })

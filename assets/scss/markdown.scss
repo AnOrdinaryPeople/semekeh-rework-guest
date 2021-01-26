@@ -1,13 +1,15 @@
 .bpi-blockquote{
     padding-left: 5%;
 }
+
 .bpi-blockquote p{
     font-style: italic;
     font-weight: 400;
     line-height: 1.6;
-    border-left: 3px solid $bpiYellow;
+    border-left: 3px solid var(--bpi-yellow);
     padding-left: .75rem;
 }
+
 .markdown-header{
     color: $bpiBlue;
     font-weight: 700;
