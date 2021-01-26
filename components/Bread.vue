@@ -54,10 +54,12 @@ export default Vue.extend({
 
             path.shift();
 
-            path.reduce((a, b, c) => {
+            path.reduce((a: any, b, c) => {
                 obj.push({
                     name: b.replace(/-/g, " "),
-                    to: a[c - 1] ? `/${a[c - 1]}/${b}` : "/" + b,
+                    to: a[c - 1]
+                        ? `/${a[c - 1].name.replace(/\s+/g, "-")}/${b}`
+                        : "/" + b,
                     disable: this.disable.length
                         ? this.disable[c] === c
                             ? true

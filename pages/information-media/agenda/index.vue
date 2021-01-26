@@ -78,6 +78,10 @@ export default Vue.extend({
         setData(data: any) {
             this.data = data;
             this.ready = true;
+
+            (this as any).setMetaHead({
+                title: this.$t("medias.agenda"),
+            });
         },
         ...mapActions(["setAgenda"]),
     },

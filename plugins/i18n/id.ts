@@ -24,5 +24,6 @@ export default {
     video: 'Video',
     readmore: 'READMORE',
     rank: 'Kejuaraan',
-    year: 'Tahun'
+    year: 'Tahun',
+    other_agenda: 'Agenda lainnya'
 }
