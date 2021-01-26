@@ -7,7 +7,8 @@ export const state = () => ({
     social: [],
     welcome: {},
     profile: {},
-    study: {}
+    study: {},
+    agenda: []
 })
 
 export type RootState = ReturnType<typeof state>
@@ -19,7 +20,8 @@ export const getters: GetterTree<RootState, RootState> = {
     // keys: s => s.keys,
     welcome: s => s.welcome,
     profile: s => s.profile,
-    study: s => s.study
+    study: s => s.study,
+    agenda: s => s.agenda
 }
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -78,6 +80,9 @@ export const actions: ActionTree<RootState, RootState> = {
     },
     setStudy({ commit }, data: object) {
         commit('SET_STUDY', data)
+    },
+    setAgenda({ commit }, data: object) {
+        commit('SET_AGENDA', data)
     }
 }
 
@@ -88,5 +93,6 @@ export const mutations: MutationTree<RootState> = {
     // SET_KEYS: (state, data) => state.keys = data,
     SET_WELCOME: (state, data: object) => state.welcome = data,
     SET_PROFILE: (state: any, { name, data }: any) => state.profile[name] = data,
-    SET_STUDY: (state: any, { name, data }: any) => state.study[name] = data
+    SET_STUDY: (state: any, { name, data }: any) => state.study[name] = data,
+    SET_AGENDA: (state: any, data) => state.agenda = data
 }

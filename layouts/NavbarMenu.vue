@@ -25,6 +25,7 @@
             <li>
                 <a
                     class="dropbtn"
+                    :class="activeNav('information-media')"
                     href="#"
                     @click.prevent="clickNavMobile('toggleA')"
                     v-b-toggle="cls ? 'app-nav-media' : 'app-nav-media-mobile'"
@@ -57,6 +58,7 @@
             <li>
                 <a
                     class="dropbtn"
+                    :class="activeNav('study')"
                     href="#"
                     @click.prevent="clickNavMobile('toggleB')"
                     v-b-toggle="cls ? 'app-nav-study' : 'app-nav-study-mobile'"
@@ -89,6 +91,7 @@
             <li>
                 <a
                     class="dropbtn"
+                    :class="activeNav('profile')"
                     href="#"
                     @click.prevent="clickNavMobile('toggleC')"
                     v-b-toggle="cls ? 'app-nav-prof' : 'app-nav-prof-mobile'"
@@ -156,6 +159,13 @@ export default Vue.extend({
     methods: {
         clickNavMobile(target: string) {
             (this as any)[target] = !(this as any)[target];
+        },
+        activeNav(target: string): string {
+            const path = this.$route.fullPath.split("/");
+
+            if (path.filter((i) => i.match(new RegExp(target, "g"))).length > 0)
+                return "text-bpi-yellow";
+            else return "";
         },
     },
     computed: {
