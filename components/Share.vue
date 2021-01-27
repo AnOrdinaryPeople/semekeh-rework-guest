@@ -3,7 +3,7 @@
         <b-col class="share-text" cols="12">
             <a
                 class="mx-1"
-                :href="`http://twitter.com/share?text=${encodeURIComponent(title)}&url=${appHref}`"
+                :href="`http://twitter.com/share?text=${encodeURIComponent(title)}&url=${url || appHref}`"
                 target="_blank"
                 rel="noopener"
             >
@@ -14,7 +14,7 @@
             </a>
             <a
                 class="mx-1"
-                :href="`https://www.facebook.com/sharer/sharer.php?u=${appHref}`"
+                :href="`https://www.facebook.com/sharer/sharer.php?u=${url || appHref}`"
                 target="_blank"
                 rel="noopener"
             >
@@ -25,7 +25,7 @@
             </a>
             <a
                 class="mx-1"
-                :href="`https://web.whatsapp.com/send?text=${appHref}`"
+                :href="`https://web.whatsapp.com/send?text=${url || appHref}`"
                 target="_blank"
                 rel="noopener"
             >
@@ -36,7 +36,7 @@
             </a>
             <a
                 class="mx-1"
-                :href="`mailto:?subject=${encodeURIComponent(title)}&amp;body=${appHref}`"
+                :href="`mailto:?subject=${encodeURIComponent(title)}&amp;body=${url || appHref}`"
                 target="_blank"
                 rel="noopener"
             >
@@ -56,6 +56,9 @@ export default Vue.extend({
     props: {
         title: {
             required: true,
+            type: String,
+        },
+        url: {
             type: String,
         },
     },

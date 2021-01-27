@@ -1,0 +1,16 @@
+.img-view{
+    overflow: hidden;
+    cursor: pointer;
+    
+    img{
+        transition: all ease-in-out .35s;
+    }
+
+    :hover{
+        opacity: .6;
+
+        img{
+            transform: scale(1.2);
+        }
+    }
+}
