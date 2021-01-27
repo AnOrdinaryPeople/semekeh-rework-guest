@@ -25,5 +25,9 @@ export default {
     readmore: 'READMORE',
     rank: 'Kejuaraan',
     year: 'Tahun',
-    other_agenda: 'Agenda lainnya'
+    other_agenda: 'Agenda lainnya',
+    structural: 'Struktural',
+    head_study: 'Kepala Program Kejuruan',
+    productive: 'Guru Produktif',
+    teacher: 'Guru Mata Pelajaran'
 }

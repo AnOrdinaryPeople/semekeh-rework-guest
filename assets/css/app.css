@@ -38,3 +38,10 @@
 .h-75-vh{
     height: 75vh;
 }
+
+.bpi-employees{
+    max-height: 450px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
