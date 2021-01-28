@@ -2,7 +2,7 @@
     <b-container class="h-75-vh">
         <b-row class="h-100 align-items-center">
             <b-col cols="12" class="text-center">
-                <h1 class="text-bpi-yellow">404</h1>
+                <h1 class="text-bpi-yellow">{{ error.statusCode }}</h1>
                 <div class="text-bpi-yellow-two">
                     <span
                         class="yeet"

@@ -49,9 +49,11 @@
             />
         </b-container>
         <b-container v-else class="my-5">
-            <b-col v-for="(i, k) in 8" :key="k" sm="12" md="6" lg="4" class="mb-4">
-                <b-skeleton-img no-aspect height="230px" />
-            </b-col>
+            <b-row>
+                <b-col v-for="(i, k) in 8" :key="k" sm="12" md="6" lg="4" class="mb-4">
+                    <b-skeleton-img no-aspect height="230px" />
+                </b-col>
+            </b-row>
         </b-container>
 
         <b-modal id="come-here-mortal" hide-header hide-footer size="lg">

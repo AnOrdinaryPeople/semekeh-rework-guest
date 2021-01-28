@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bread :title="data.title || $t('medias.agenda')" />
+        <bread :title="data.title ? data.title : null" :use-bread="data.title ? false : true" />
 
         <b-container v-if="ready" class="my-4">
             <b-row>

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- I NEED NULL COALESCE REEEEE (2) -->
         <bread use-bread :disable="[0]" />
 
         <nuxt-child />

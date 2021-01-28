@@ -2,7 +2,7 @@
     <b-col :md="cls ? 6 : 12" sm="12">
         <ul :class="cls">
             <li v-if="cls === null" class="search-mobile">
-                <form>
+                <form @submit.prevent="search()">
                     <b-input-group class="pt-2">
                         <b-input-group-prepend>
                             <b-btn type="submit" variant="white">
@@ -166,6 +166,23 @@ export default Vue.extend({
             if (path.filter((i) => i.match(new RegExp(target, "g"))).length > 0)
                 return "text-bpi-yellow";
             else return "";
+        },
+        search() {
+            if (this.q !== "" && this.q.length > 2) {
+                if (this.$router.currentRoute.name === "search")
+                    this.$router.replace({ query: { q: this.q } });
+                else
+                    this.$router.push({
+                        path: "/search",
+                        query: { q: this.q },
+                    });
+            } else {
+                (this as any).$bvToast.toast(this.$t("search_warn"), {
+                    title: this.$t("warn"),
+                    variant: "danger",
+                    toaster: "b-toaster-bottom-center",
+                });
+            }
         },
     },
     computed: {

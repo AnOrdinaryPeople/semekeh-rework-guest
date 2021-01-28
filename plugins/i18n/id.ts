@@ -29,5 +29,8 @@ export default {
     structural: 'Struktural',
     head_study: 'Kepala Program Kejuruan',
     productive: 'Guru Produktif',
-    teacher: 'Guru Mata Pelajaran'
+    teacher: 'Guru Mata Pelajaran',
+    search_not_found: 'Hasil "{q}" untuk {type} tidak ditemukan',
+    search_warn: 'Query search tidak boleh kosong dan minimal 3 karakter!',
+    warn: 'Peringatan'
 }

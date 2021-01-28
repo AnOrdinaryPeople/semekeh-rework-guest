@@ -4,7 +4,7 @@
             <b-container>
                 <ul class="justify-content-md-center">
                     <li class="search mt-2 col-md-6">
-                        <form>
+                        <form @submit.prevent="search()">
                             <label for="app-nav-search" class="sr-only">{{ $t('rick_roll') }}</label>
                             <b-input-group>
                                 <b-input-group-prepend>
@@ -153,6 +153,23 @@ export default Vue.extend({
         },
         setD(nav: any, display: string) {
             nav.display = display;
+        },
+        search() {
+            if (this.q !== "" && this.q.length > 2) {
+                if (this.$router.currentRoute.name === "search")
+                    this.$router.replace({ query: { q: this.q } });
+                else
+                    this.$router.push({
+                        path: "/search",
+                        query: { q: this.q },
+                    });
+            } else {
+                (this as any).$bvToast.toast(this.$t("search_warn"), {
+                    title: this.$t("warn"),
+                    variant: "danger",
+                    toaster: "b-toaster-bottom-center",
+                });
+            }
         },
     },
     computed: {
