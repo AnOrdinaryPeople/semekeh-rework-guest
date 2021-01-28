@@ -61,7 +61,7 @@
             <div v-else>
                 <h1
                     class="text-center text-bpi-blue"
-                >{{ $t('search_not_found', {type: $t('medias.agenda'), q: $route.query.q}) }}</h1>
+                >{{ $t('search_not_found', { type: $t('medias.agenda'), q: $route.query.q }) }}</h1>
             </div>
 
             <div v-if="pres.length">
@@ -134,7 +134,7 @@
 
 <style scoped>
 h1.text-bpi-blue.text-center {
-    word-break: break-all;
+    word-break: break-word;
 }
 </style>
 
