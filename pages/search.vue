@@ -161,6 +161,11 @@ export default Vue.extend({
                 .then((r: any) => {
                     this.agenda = r.data.agenda;
                     this.pres = r.data.pres;
+
+                    (this as any).setMetaHead({
+                        title: this.$route.query.q,
+                    });
+
                     this.ready = true;
                 });
         },

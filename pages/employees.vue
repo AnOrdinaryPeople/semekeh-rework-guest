@@ -150,6 +150,11 @@ export default Vue.extend({
             a.third = this.sort(t.filter((i: any) => i.type === 3));
 
             this.img = d.img;
+
+            (this as any).setMetaHead({
+                title: this.$t("employees"),
+            });
+
             this.ready = true;
         },
         next() {

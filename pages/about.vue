@@ -291,6 +291,17 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
+    async fetch() {
+        await new Promise((dispatch) =>
+            setTimeout(() => {
+                dispatch(
+                    (this as any).setMetaHead({
+                        title: this.$t("about"),
+                    })
+                );
+            }, 250)
+        );
+    },
     computed: {
         ...mapGetters(["foot", "social"]),
     },
