@@ -70,7 +70,7 @@ export default {
     locales: ['id'],
     defaultLocale: 'id',
     vueI18n: {
-      fallbackLocale: 'en',
+      fallbackLocale: 'id',
       messages: {
         id
       }
@@ -94,8 +94,9 @@ export default {
       author: process.env.MIX_META_AUTHOR,
       description: process.env.MIX_META_DESCRIPTION,
       theme_color: process.env.MIX_META_THEME_COLOR,
-      lang: 'id',
-      twitterCard: 'summary',
+      ogImage: `${process.env.MIX_APP_URL_MAIN}/img/banner.webp`,
+      lang: 'id-ID',
+      twitterCard: 'summary_large_image',
       twitterSite: process.env.MIX_META_TWITTER_SITE
     },
     manifest: {
