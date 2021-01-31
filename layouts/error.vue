@@ -5,9 +5,8 @@
                 <h1 class="text-bpi-yellow">{{ error.statusCode }}</h1>
                 <div class="text-bpi-yellow-two">
                     <span
-                        class="yeet"
-                        @mouseover="hover = true"
-                        @mouseleave="hover = false"
+                        class="yeet cursor-pointer no-select"
+                        @click="hover = !hover"
                     >{{ hover ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ ノ( ゜-゜ノ)' }}</span>
                 </div>
                 <strong

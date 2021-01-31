@@ -3,33 +3,7 @@
         <bread :title="$t('employees')" />
 
         <b-container v-if="ready" class="my-4">
-            <swiper ref="carousel" :options="carouselConfig" class="mb-4">
-                <swiper-slide v-for="(i, k) in img" :key="k">
-                    <b-img
-                        fluid
-                        class="bpi-employees"
-                        :src="sauce('storage/' + i.url)"
-                        :alt="appName"
-                    />
-                </swiper-slide>
-
-                <div class="swiper-pagination" slot="pagination" />
-
-                <div
-                    class="swiper-button-prev swiper-button carousel-btn-prev"
-                    slot="button-prev"
-                    @click="prev()"
-                >
-                    <fa icon="chevron-left" />
-                </div>
-                <div
-                    class="swiper-button-next swiper-button carousel-btn-next"
-                    slot="button-next"
-                    @click="next()"
-                >
-                    <fa icon="chevron-right" />
-                </div>
-            </swiper>
+            <slider class="mb-4" class-img="bpi-employees" :data="img" />
 
             <b-card>
                 <div v-for="(i, k) in Object.keys(data)" :key="k" class="mb-4">
@@ -80,17 +54,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import { mapGetters, mapActions } from "vuex";
 
-SwiperCore.use([Pagination, Autoplay]);
-
 export default Vue.extend({
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
     data: () => ({
         title: [
             "structural",
@@ -108,20 +74,6 @@ export default Vue.extend({
         },
         img: [],
         ready: false,
-        carouselConfig: {
-            loop: true,
-            autoplay: {
-                delay: 5500,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".carousel-btn-next",
-                prevEl: ".carousel-btn-prev",
-            },
-        },
     }),
     async fetch() {
         if (this.employees?.employee)
@@ -157,12 +109,6 @@ export default Vue.extend({
 
             this.ready = true;
         },
-        next() {
-            this.swiper?.slideNext();
-        },
-        prev() {
-            this.swiper?.slidePrev();
-        },
         sort(data: any) {
             return data.sort((a: any, b: any) =>
                 a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
@@ -171,15 +117,7 @@ export default Vue.extend({
         ...mapActions(["setEmployees"]),
     },
     computed: {
-        swiper(): any {
-            const ref: any = this.$refs.carousel;
-
-            return ref?.$swiper;
-        },
         ...mapGetters(["employees"]),
-    },
-    directives: {
-        swiper: directive,
     },
 });
 </script>

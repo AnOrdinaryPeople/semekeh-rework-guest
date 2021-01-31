@@ -15,36 +15,7 @@
 
                         <markdown :content="data.content" />
 
-                        <swiper ref="carousel" :options="carouselConfig">
-                            <swiper-slide v-for="(i, k) in img" :key="k">
-                                <img
-                                    class="img-fluid"
-                                    :src="
-                                        sauce('storage/' + i.url)
-                                    "
-                                    :alt="i.title || appName"
-                                    style="height: auto"
-                                />
-                            </swiper-slide>
-
-                            <div class="swiper-pagination" slot="pagination" />
-
-                            <div
-                                class="swiper-button-prev swiper-button carousel-btn-prev"
-                                slot="button-prev"
-                                @click="prev()"
-                            >
-                                <fa icon="chevron-left" />
-                            </div>
-                            <div
-                                class="swiper-button-next swiper-button carousel-btn-next"
-                                slot="button-next"
-                                @click="next()"
-                            >
-                                <fa icon="chevron-right" />
-                            </div>
-                        </swiper>
-
+                        <slider :data="img" />
                         <share :title="data.title" />
                     </div>
                 </b-col>
@@ -106,36 +77,14 @@
 
 <script lang="ts">
 import Vue from "vue";
-import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import { mapGetters, mapActions } from "vuex";
 
-SwiperCore.use([Pagination, Autoplay]);
-
 export default Vue.extend({
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
     data: () => ({
         data: { title: "" },
         img: [],
         other: [],
         ready: false,
-        carouselConfig: {
-            loop: true,
-            autoplay: {
-                delay: 5500,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".carousel-btn-next",
-                prevEl: ".carousel-btn-prev",
-            },
-        },
     }),
     async fetch() {
         await this.render();
@@ -182,24 +131,10 @@ export default Vue.extend({
 
             this.ready = true;
         },
-        next() {
-            this.swiper?.slideNext();
-        },
-        prev() {
-            this.swiper?.slidePrev();
-        },
         ...mapActions(["setAgendaDetail"]),
     },
     computed: {
-        swiper(): any {
-            const swiperRef: any = this.$refs.carousel;
-
-            return swiperRef?.$swiper;
-        },
         ...mapGetters(["agendaDetail"]),
-    },
-    directives: {
-        swiper: directive,
     },
     watch: {
         "$route.params.id": function () {

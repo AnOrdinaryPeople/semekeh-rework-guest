@@ -35,7 +35,8 @@ export default {
   plugins: [
     '~plugins/helper.ts',
     '~plugins/icon.ts',
-    '~plugins/devDetector.ts'
+    '~plugins/devDetector.ts',
+    '~plugins/swiper.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

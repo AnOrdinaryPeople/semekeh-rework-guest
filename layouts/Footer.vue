@@ -37,7 +37,7 @@
                     <nuxt-link
                         v-if="foot.agenda"
                         class="text-decoration-none"
-                        :to="`/information-agenda/${foot.agenda.slug}`"
+                        :to="`/information-media/agenda/${foot.agenda.slug}`"
                     >
                         <b-row class="footer-agenda" no-gutters>
                             <b-col sm="12" md="4" lg="4">

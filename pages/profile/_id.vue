@@ -6,37 +6,7 @@
                     <markdown :content="content.content" />
                 </b-col>
                 <b-col sm="12" md="4">
-                    <swiper :options="carouselConfig" ref="carousel">
-                        <swiper-slide v-for="(i, k) in img" :key="k">
-                            <b-img
-                                fluid
-                                :src="sauce('storage/' + i.url)"
-                                :alt="appName"
-                                width="350"
-                                height="350"
-                                style="height: auto"
-                            />
-                        </swiper-slide>
-
-                        <div class="swiper-pagination" slot="pagination" />
-
-                        <div
-                            class="swiper-button-prev swiper-button carousel-btn-prev"
-                            slot="button-prev"
-                            @click="prev()"
-                        >
-                            <fa icon="chevron-left" />
-                            <span class="sr-only">{{ $t('rick_roll') }}</span>
-                        </div>
-                        <div
-                            class="swiper-button-next swiper-button carousel-btn-next"
-                            slot="button-next"
-                            @click="next()"
-                        >
-                            <fa icon="chevron-right" />
-                            <span class="sr-only">{{ $t('rick_roll') }}</span>
-                        </div>
-                    </swiper>
+                    <slider :data="img" width="350" height="350" />
                 </b-col>
             </b-row>
 
@@ -72,40 +42,17 @@
 
 <script lang="ts">
 import Vue from "vue";
-
-import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import { mapGetters, mapActions } from "vuex";
-
-SwiperCore.use([Pagination, Autoplay]);
 
 interface Content {
     [key: string]: any;
 }
 
 export default Vue.extend({
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
     data: () => ({
         ready: false,
         content: {} as Content,
         img: [],
-        carouselConfig: {
-            loop: true,
-            autoplay: {
-                delay: 5500,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".carousel-btn-next",
-                prevEl: ".carousel-btn-prev",
-            },
-        },
         council: {
             title: "",
             json: [],
@@ -171,12 +118,6 @@ export default Vue.extend({
 
             await Vue.set(this, "ready", true);
         },
-        next() {
-            this.swiper?.slideNext();
-        },
-        prev() {
-            this.swiper?.slidePrev();
-        },
         ...mapActions(["setProfile"]),
     },
     computed: {
@@ -193,15 +134,7 @@ export default Vue.extend({
                 ? 4
                 : 0;
         },
-        swiper(): any {
-            const swiperRef: any = this.$refs.carousel;
-
-            return swiperRef?.$swiper;
-        },
         ...mapGetters(["profile"]),
-    },
-    directives: {
-        swiper: directive,
     },
     watch: {
         "$route.params.id": function () {

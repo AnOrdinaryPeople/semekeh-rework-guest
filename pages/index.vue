@@ -398,20 +398,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import { directive } from "vue-awesome-swiper";
 
 import { mapGetters } from "vuex";
-
-SwiperCore.use([Pagination, Autoplay]);
 
 export default Vue.extend({
     head: {
         title: process.env.appName,
-    },
-    components: {
-        Swiper,
-        SwiperSlide,
     },
     data: () => ({
         carouselConfig: {
