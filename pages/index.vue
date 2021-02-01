@@ -78,15 +78,19 @@
 
                 <b-row>
                     <swiper class="swiper-bpi-video" :options="videoConfig">
-                        <swiper-slide class="img-video" v-for="(i, k) in welcome.video" :key="k">
+                        <div
+                            class="img-video swiper-slide"
+                            v-for="(i, k) in welcome.video"
+                            :key="k"
+                            @click="openVideo(i.video, i.thumbnail)"
+                        >
                             <b-img-lazy
                                 width="240"
                                 height="150"
                                 :src="sauce('storage/' + i.thumbnail)"
                                 :alt="appName"
-                                @click="openVideo(i.video, i.thumbnail)"
                             />
-                        </swiper-slide>
+                        </div>
                     </swiper>
                 </b-row>
             </b-container>
@@ -488,6 +492,8 @@ export default Vue.extend({
                 video,
                 thumbnail,
             };
+            console.log("yo", video, thumbnail);
+
             (this as any).$bvModal.show("video-modal");
         },
     },
