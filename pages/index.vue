@@ -492,7 +492,6 @@ export default Vue.extend({
                 video,
                 thumbnail,
             };
-            console.log("yo", video, thumbnail);
 
             (this as any).$bvModal.show("video-modal");
         },
