@@ -41,7 +41,7 @@
                     >
                         <b-row class="footer-agenda" no-gutters>
                             <b-col sm="12" md="4" lg="4">
-                                <b-img
+                                <b-img-lazy
                                     class="mb-2"
                                     fluid
                                     width="500"

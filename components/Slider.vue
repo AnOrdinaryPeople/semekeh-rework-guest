@@ -2,7 +2,7 @@
     <!-- I NEED NULL COALESCE REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
     <swiper :options="config" ref="carousel">
         <swiper-slide v-for="(i, k) in data" :key="k">
-            <b-img
+            <b-img-lazy
                 fluid
                 :class="classImg"
                 :src="sauce('storage/' + i.url)"

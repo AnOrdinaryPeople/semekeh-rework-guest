@@ -17,7 +17,7 @@
                         <p>{{ i.description }}</p>
                     </div>
                     <div class="slider-img">
-                        <b-img
+                        <b-img-lazy
                             fluid
                             :src="sauce('storage/' + i.url)"
                             width="100%"
@@ -35,7 +35,7 @@
                     </b-col>
                 </div>
 
-                <b-img
+                <b-img-lazy
                     :class="i.type === 1 ? 'slider-img-back' : ''"
                     :src="i.type === 1 ? '/img/back-slider.webp' : sauce('storage/' + i.url)"
                     width="100%"
@@ -79,7 +79,7 @@
                 <b-row>
                     <swiper class="swiper-bpi-video" :options="videoConfig">
                         <swiper-slide class="img-video" v-for="(i, k) in welcome.video" :key="k">
-                            <b-img
+                            <b-img-lazy
                                 width="240"
                                 height="150"
                                 :src="sauce('storage/' + i.thumbnail)"
@@ -209,7 +209,7 @@
                 <b-col v-for="(i, k) in welcome.prestation" :key="k" sm="12" lg="4">
                     <div class="single-thumb-one mb-4">
                         <div class="card-img-thumb">
-                            <b-img
+                            <b-img-lazy
                                 fluid
                                 width="450"
                                 height="350"
@@ -279,7 +279,7 @@
                     >
                         <div class="single-thumb-two">
                             <div class="card-img-thumb">
-                                <b-img
+                                <b-img-lazy
                                     fluid
                                     width="420"
                                     height="350"
@@ -357,7 +357,7 @@
             <swiper ref="company" :options="companyConfig">
                 <swiper-slide v-for="(i, k) in welcome.company" :key="k" class="company-slider">
                     <a class="company-img" :href="i.link" target="_blank" rel="noopener">
-                        <b-img
+                        <b-img-lazy
                             fluid
                             width="450"
                             height="75"

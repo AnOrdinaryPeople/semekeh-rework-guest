@@ -1,8 +1,15 @@
 import { id } from './plugins/i18n'
+import redirectSSL from 'redirect-ssl'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+
+  serverMiddleware: [
+    redirectSSL.create({
+      enabled: process.env.NODE_ENV === 'production'
+    }),
+  ],
 
   env: {
     appName: process.env.MIX_APP_NAME,
@@ -86,6 +93,12 @@ export default {
         }
       }
     },
+  },
+
+  render: {
+    static: {
+      maxAge: 31557600000
+    }
   },
 
   pwa: {

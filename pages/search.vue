@@ -81,7 +81,7 @@
                     <b-col v-for="(i, k) in nani" :key="k" sm="12" lg="4">
                         <div class="single-thumb-one mb-4">
                             <div class="card-img-thumb">
-                                <b-img
+                                <b-img-lazy
                                     fluid
                                     width="450"
                                     height="350"

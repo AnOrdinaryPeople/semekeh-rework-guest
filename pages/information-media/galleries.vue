@@ -10,7 +10,7 @@
                     class="card img-view"
                     @click="open(sauce('storage/' + i.video), sauce('storage/' + i.thumbnail))"
                 >
-                    <b-img
+                    <b-img-lazy
                         class="card-img"
                         fluid
                         :src="sauce('storage/' + i.thumbnail)"
@@ -36,7 +36,7 @@
                     class="card img-view"
                     @click="open(sauce('storage/' + i.url))"
                 >
-                    <b-img class="card-img" fluid :src="sauce('storage/' + i.url)" :alt="appName" />
+                    <b-img-lazy class="card-img" fluid :src="sauce('storage/' + i.url)" :alt="appName" />
                 </div>
             </b-card-group>
 
@@ -63,7 +63,7 @@
                 </b-embed>
             </div>
             <div v-else class="text-center">
-                <b-img fluid :src="view" :alt="appName" />
+                <b-img-lazy fluid :src="view" :alt="appName" />
             </div>
 
             <b-row class="px-3">

@@ -4,7 +4,7 @@
             <b-row>
                 <b-col sm="12" md="8">
                     <div class="detail-img">
-                        <b-img fluid :src="sauce('storage/' + data.banner)" :alt="appName" />
+                        <b-img-lazy fluid :src="sauce('storage/' + data.banner)" :alt="appName" />
                     </div>
                     <div class="detail-post">
                         <div class="detail-label">
@@ -16,7 +16,7 @@
                 </b-col>
                 <b-col sm="12" md="4">
                     <h3 class="text-bpi-blue">{{ dataa.title }}</h3>
-                    <b-img fluid :src="sauce('storage/' + dataa.url)" :alt="appName" class="my-2" />
+                    <b-img-lazy fluid :src="sauce('storage/' + dataa.url)" :alt="appName" class="my-2" />
                     <markdown :content="dataa.content" />
                 </b-col>
             </b-row>
