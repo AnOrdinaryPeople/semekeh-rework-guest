@@ -76,7 +76,7 @@
         </div>
 
         <b-collapse id="app-mobile-nav" v-model="toggle" class="sidenav">
-            <navbar-menu :cls="null" />
+            <navbar-menu :cls="null" @search="searchMobile" />
         </b-collapse>
     </div>
 </template>
@@ -170,6 +170,9 @@ export default Vue.extend({
                     toaster: "b-toaster-bottom-center",
                 });
             }
+        },
+        searchMobile(bool: boolean) {
+            this.toggle = bool;
         },
     },
     computed: {

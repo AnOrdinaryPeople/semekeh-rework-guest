@@ -171,11 +171,14 @@ export default Vue.extend({
             if (this.q !== "" && this.q.length > 2) {
                 if (this.$router.currentRoute.name === "search")
                     this.$router.replace({ query: { q: this.q } });
-                else
+                else {
                     this.$router.push({
                         path: "/search",
                         query: { q: this.q },
                     });
+
+                    this.$emit("search", false);
+                }
             } else {
                 (this as any).$bvToast.toast(this.$t("search_warn"), {
                     title: this.$t("warn"),
