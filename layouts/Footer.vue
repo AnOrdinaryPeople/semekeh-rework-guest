@@ -63,7 +63,7 @@
         </b-container>
         <div class="copyright">
             <p>
-                {{ `${$t('copyright')} &copy; ${new Date().getFullYear()} - ` }}
+                {{ `${$t('copyright')} &copy; ${new Date().getFullYear()} &mdash; ` }}
                 <nuxt-link to="/about">
                     <strong>{{ appName }}</strong>
                 </nuxt-link>
