@@ -17,7 +17,7 @@
                         <p>{{ i.description }}</p>
                     </div>
                     <div class="slider-img">
-                        <b-img-lazy
+                        <b-img
                             fluid
                             :src="sauce('storage/' + i.url)"
                             width="100%"
@@ -35,7 +35,7 @@
                     </b-col>
                 </div>
 
-                <b-img-lazy
+                <b-img
                     :class="i.type === 1 ? 'slider-img-back' : ''"
                     :src="i.type === 1 ? '/img/back-slider.webp' : sauce('storage/' + i.url)"
                     width="100%"
