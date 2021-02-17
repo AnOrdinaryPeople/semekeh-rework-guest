@@ -1,6 +1,10 @@
 <template>
     <div>
-        <bread :title="data.title ? data.title : null" :use-bread="data.title ? false : true" />
+        <bread
+            :title="data.title ? data.title : null"
+            :use-bread="data.title ? false : true"
+            :sub-title="data.time ? data.time : null"
+        />
 
         <b-container v-if="ready" class="my-4">
             <b-row>
