@@ -6,21 +6,23 @@
             <b-row id="news-list">
                 <b-col v-for="(i, k) in data" :key="k" sm="12" md="4" class="mb-3">
                     <nuxt-link class="news-card" :to="`/information-media/news/${i.slug}`">
-                        <div class="card agenda-card">
-                            <div class="position-relative">
-                                <div class="text-center">
-                                    <img
-                                        class="card-img"
-                                        fluid
-                                        :src="sauce('storage/' + i.banner)"
-                                        :alt="i.title"
-                                    />
-                                </div>
-                                <div class="agenda-footer px-4">
-                                    <span class="news-title">{{ i.title }}</span>
+                        <b-aspect aspect="19:8">
+                            <div class="card agenda-card">
+                                <div class="position-relative">
+                                    <div class="text-center">
+                                        <img
+                                            class="card-img"
+                                            fluid
+                                            :src="sauce('storage/' + i.banner)"
+                                            :alt="i.title"
+                                        />
+                                    </div>
+                                    <div class="agenda-footer px-4">
+                                        <span class="news-title">{{ i.title }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </b-aspect>
                     </nuxt-link>
                 </b-col>
             </b-row>

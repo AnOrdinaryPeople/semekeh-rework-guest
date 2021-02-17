@@ -13,6 +13,10 @@
                             <p>{{ $t('media') }}</p>
                         </div>
 
+                        <div class="mb-3">
+                            <strong>{{ dateFormat(data.created_at) }}</strong>
+                        </div>
+
                         <markdown :content="data.content" />
 
                         <share :title="data.title" />
@@ -22,11 +26,8 @@
                     <h3 class="text-bpi-blue">{{ $t('other_news') }}</h3>
                     <b-row>
                         <b-col v-for="(i, k) in other" :key="k" cols="12" class="my-3">
-                            <nuxt-link :to="'/information-media/agenda/' + i.slug">
-                                <nuxt-link
-                                    class="news-card"
-                                    :to="`/information-media/news/${i.slug}`"
-                                >
+                            <nuxt-link class="news-card" :to="`/information-media/news/${i.slug}`">
+                                <b-aspect aspect="19:8">
                                     <div class="card agenda-card">
                                         <div class="position-relative">
                                             <div class="text-center">
@@ -42,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </nuxt-link>
+                                </b-aspect>
                             </nuxt-link>
                         </b-col>
                     </b-row>

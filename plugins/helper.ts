@@ -28,6 +28,14 @@ Vue.mixin({
                 head.querySelector('meta[name="description"]').content = obj.desc
                 head.querySelector('meta[name="og:description"]').content = obj.desc
             }
+        },
+        dateFormat(str: string) {
+            return new Date(str).toLocaleDateString('id', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })
         }
     }
 })
