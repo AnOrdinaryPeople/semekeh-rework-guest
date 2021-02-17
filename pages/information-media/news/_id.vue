@@ -15,37 +15,34 @@
 
                         <markdown :content="data.content" />
 
-                        <slider :data="img" />
                         <share :title="data.title" />
                     </div>
                 </b-col>
                 <b-col sm="12" md="4" lg="4">
-                    <h3 class="text-bpi-blue">{{ $t('other_agenda') }}</h3>
+                    <h3 class="text-bpi-blue">{{ $t('other_news') }}</h3>
                     <b-row>
                         <b-col v-for="(i, k) in other" :key="k" cols="12" class="my-3">
                             <nuxt-link :to="'/information-media/agenda/' + i.slug">
-                                <div class="card agenda-card text-center">
-                                    <div class="position-relative">
-                                        <img
-                                            class="card-img"
-                                            width="450"
-                                            height="100%"
-                                            :src="sauce('storage/' + i.banner)"
-                                            :alt="appName"
-                                        />
-                                        <div class="card-body card-img-overlay">
-                                            <span class="card-title">{{ i.title }}</span>
-                                            <p class="card-subtitle text-muted mb-2">{{ i.time }}</p>
-                                        </div>
-                                        <div class="agenda-footer">
-                                            <span class="text-center">
-                                                <fa icon="chevron-up" />
-                                                <br />
-                                                {{ $t('readmore') }}
-                                            </span>
+                                <nuxt-link
+                                    class="news-card"
+                                    :to="`/information-media/news/${i.slug}`"
+                                >
+                                    <div class="card agenda-card">
+                                        <div class="position-relative">
+                                            <div class="text-center">
+                                                <img
+                                                    class="card-img"
+                                                    fluid
+                                                    :src="sauce('storage/' + i.banner)"
+                                                    :alt="i.title"
+                                                />
+                                            </div>
+                                            <div class="agenda-footer px-4">
+                                                <span class="news-title">{{ i.title }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </nuxt-link>
                             </nuxt-link>
                         </b-col>
                     </b-row>
@@ -82,7 +79,6 @@ import { mapGetters, mapActions } from "vuex";
 export default Vue.extend({
     data: () => ({
         data: { title: "" },
-        img: [],
         other: [],
         ready: false,
     }),
@@ -92,7 +88,7 @@ export default Vue.extend({
     methods: {
         async render() {
             const slug = this.$route.params.id,
-                g = this.agendaDetail[slug];
+                g = this.newsDetail[slug];
 
             this.ready = false;
 
@@ -106,38 +102,37 @@ export default Vue.extend({
                     );
             } else
                 await (this as any).$axios
-                    .get("agenda/" + slug)
+                    .get("news/" + slug)
                     .then((r: any) => {
                         if (r.data) {
                             if (!g) {
                                 this.setData(r.data);
-                                this.setAgendaDetail({
+                                this.setNewsDetail({
                                     name: slug,
                                     data: r.data,
                                 });
                             }
                         } else {
-                            this.setAgendaDetail({ name: slug, data: false });
+                            this.setNewsDetail({ name: slug, data: false });
                             this.$router.push("/404");
                         }
                     });
         },
         setData(data: any) {
-            this.data = data.agenda;
-            this.img = data.img;
+            this.data = data.news;
             this.other = data.other;
 
             (this as any).setMetaHead({
-                title: data.agenda.title,
-                desc: data.agenda.content,
+                title: data.news.title,
+                desc: data.news.content,
             });
 
             this.ready = true;
         },
-        ...mapActions(["setAgendaDetail"]),
+        ...mapActions(["setNewsDetail"]),
     },
     computed: {
-        ...mapGetters(["agendaDetail"]),
+        ...mapGetters(["newsDetail"]),
     },
     watch: {
         "$route.params.id": function () {

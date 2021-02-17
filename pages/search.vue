@@ -22,7 +22,7 @@
 
                 <b-row id="agenda-list">
                     <b-col v-for="(i, k) in loop" :key="k" sm="12" md="6" lg="4" class="my-3">
-                        <router-link :to="'/information-media/agenda/' + i.slug">
+                        <nuxt-link :to="'/information-media/agenda/' + i.slug">
                             <div class="card agenda-card text-center">
                                 <div class="position-relative">
                                     <img
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </nuxt-link>
                     </b-col>
                 </b-row>
 

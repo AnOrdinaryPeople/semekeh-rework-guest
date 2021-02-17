@@ -157,7 +157,7 @@
             </b-row>
             <b-row class="justify-content-center">
                 <b-col sm="12" md="6" lg="4">
-                    <router-link :to="'/information-media/agenda/' + welcome.agenda.slug">
+                    <nuxt-link :to="'/information-media/agenda/' + welcome.agenda.slug">
                         <div class="card agenda-card text-center">
                             <div class="position-relative">
                                 <img
@@ -182,7 +182,7 @@
                                 </div>
                             </div>
                         </div>
-                    </router-link>
+                    </nuxt-link>
                 </b-col>
             </b-row>
         </b-container>
@@ -198,6 +198,49 @@
                     </b-col>
                 </b-row>
             </div>
+        </b-container>
+
+        <b-container v-if="welcome.news" class="my-4">
+            <b-row>
+                <b-col cols="12">
+                    <div class="section-heading">
+                        <span>{{ welcome.section[6].title }}</span>
+                        <p>{{ welcome.section[6].subtitle }}</p>
+                    </div>
+                </b-col>
+            </b-row>
+
+            <b-row class="justify-content-center">
+                <b-col v-for="(i, k) in welcome.news" :key="k" sm="12" md="4" class="mb-3">
+                    <nuxt-link class="news-card" :to="`/information-media/news/${i.slug}`">
+                        <div class="card agenda-card">
+                            <div class="position-relative">
+                                <div class="text-center">
+                                    <img
+                                        class="card-img"
+                                        fluid
+                                        :src="sauce('storage/' + i.banner)"
+                                        :alt="i.title"
+                                    />
+                                </div>
+                                <div class="agenda-footer px-4">
+                                    <span class="news-title">{{ i.title }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </b-col>
+            </b-row>
+        </b-container>
+        <b-container v-else class="my-4">
+            <b-skeleton width="60%" class="mx-auto" />
+            <b-skeleton width="50%" class="mx-auto mb-5" />
+
+            <b-row class="justify-content-center">
+                <b-col v-for="(i, k) in 3" :key="k" cols="6" class="mb-3">
+                    <b-skeleton-img no-aspect height="250px" />
+                </b-col>
+            </b-row>
         </b-container>
 
         <b-container v-if="welcome.prestation && welcome.prestation.length" class="my-4">

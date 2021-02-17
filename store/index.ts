@@ -10,6 +10,8 @@ export const state = () => ({
     study: {},
     agenda: [],
     agendaDetail: {},
+    news: [],
+    newsDetail: {},
     prestation: [],
     img: {},
     employees: {}
@@ -27,6 +29,8 @@ export const getters: GetterTree<RootState, RootState> = {
     study: s => s.study,
     agenda: s => s.agenda,
     agendaDetail: s => s.agendaDetail,
+    news: s => s.news,
+    newsDetail: s => s.newsDetail,
     prestation: s => s.prestation,
     img: s => s.img,
     employees: s => s.employees
@@ -95,6 +99,12 @@ export const actions: ActionTree<RootState, RootState> = {
     setAgendaDetail({ commit }, data: object) {
         commit('SET_AGENDA_DETAIL', data)
     },
+    setNews({ commit }, data: object) {
+        commit('SET_NEWS', data)
+    },
+    setNewsDetail({ commit }, data: object) {
+        commit('SET_NEWS_DETAIL', data)
+    },
     setPrestation({ commit }, data: object) {
         commit('SET_PRESTATION', data)
     },
@@ -116,6 +126,8 @@ export const mutations: MutationTree<RootState> = {
     SET_STUDY: (state: any, { name, data }: any) => state.study[name] = data,
     SET_AGENDA: (state, data) => state.agenda = data,
     SET_AGENDA_DETAIL: (state: any, { name, data }: any) => state.agendaDetail[name] = data,
+    SET_NEWS: (state, data) => state.news = data,
+    SET_NEWS_DETAIL: (state: any, { name, data }: any) => state.newsDetail[name] = data,
     SET_PRESTATION: (state, data) => state.prestation = data,
     SET_IMG: (state, data) => state.img = data,
     SET_EMPLOYEES: (state, data) => state.employees = data

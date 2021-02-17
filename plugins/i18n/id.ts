@@ -26,6 +26,7 @@ export default {
     rank: 'Kejuaraan',
     year: 'Tahun',
     other_agenda: 'Agenda lainnya',
+    other_news: 'Berita lainnya',
     structural: 'Struktural',
     head_study: 'Kepala Program Kejuruan',
     productive: 'Guru Produktif',

@@ -1,30 +1,23 @@
 <template>
     <div>
-        <bread :title="$t('medias.agenda')" />
+        <bread :title="$t('medias.news')" />
 
         <b-container v-if="ready" class="my-4">
-            <b-row id="agenda-list">
-                <b-col v-for="(i, k) in loop" :key="k" sm="12" md="6" lg="4" class="my-3">
-                    <nuxt-link :to="'/information-media/agenda/' + i.slug">
-                        <div class="card agenda-card text-center">
+            <b-row id="news-list">
+                <b-col v-for="(i, k) in data" :key="k" sm="12" md="4" class="mb-3">
+                    <nuxt-link class="news-card" :to="`/information-media/news/${i.slug}`">
+                        <div class="card agenda-card">
                             <div class="position-relative">
-                                <img
-                                    class="card-img"
-                                    width="450"
-                                    height="100%"
-                                    :src="sauce('storage/' + i.banner)"
-                                    :alt="appName"
-                                />
-                                <div class="card-body card-img-overlay">
-                                    <span class="card-title">{{ i.title }}</span>
-                                    <p class="card-subtitle text-muted mb-2">{{ i.time }}</p>
+                                <div class="text-center">
+                                    <img
+                                        class="card-img"
+                                        fluid
+                                        :src="sauce('storage/' + i.banner)"
+                                        :alt="i.title"
+                                    />
                                 </div>
-                                <div class="agenda-footer">
-                                    <span class="text-center">
-                                        <fa icon="chevron-up" />
-                                        <br />
-                                        {{ $t('readmore') }}
-                                    </span>
+                                <div class="agenda-footer px-4">
+                                    <span class="news-title">{{ i.title }}</span>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +31,7 @@
                 v-model="current"
                 :total-rows="data.length"
                 :per-page="perPage"
-                aria-controls="agenda-list"
+                aria-controls="news-list"
             />
         </b-container>
         <b-container v-else class="my-5">
@@ -63,16 +56,16 @@ export default Vue.extend({
         ready: false,
     }),
     async fetch() {
-        if (this.agenda.length)
+        if (this.news.length)
             await new Promise((dispatch) =>
                 setTimeout(() => {
-                    dispatch(this.setData(this.agenda));
+                    dispatch(this.setData(this.news));
                 }, 250)
             );
         else
-            await (this as any).$axios.get("agenda").then((r: any) => {
+            await (this as any).$axios.get("news").then((r: any) => {
                 this.setData(r.data);
-                this.setAgenda(r.data);
+                this.setNews(r.data);
             });
     },
     methods: {
@@ -81,10 +74,10 @@ export default Vue.extend({
             this.ready = true;
 
             (this as any).setMetaHead({
-                title: this.$t("medias.agenda"),
+                title: this.$t("medias.news"),
             });
         },
-        ...mapActions(["setAgenda"]),
+        ...mapActions(["setNews"]),
     },
     computed: {
         loop(): any {
@@ -93,7 +86,7 @@ export default Vue.extend({
                 this.current * this.perPage
             );
         },
-        ...mapGetters(["agenda"]),
+        ...mapGetters(["news"]),
     },
 });
 </script>

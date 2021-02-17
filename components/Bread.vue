@@ -16,7 +16,7 @@
                             </span>
                             <span v-else-if="i.disable" class="breadcrumb-disable">{{ i.name }}</span>
                             <span v-else>
-                                <router-link class="text-white" :to="i.to">{{ i.name }}</router-link>
+                                <nuxt-link class="text-white" :to="i.to">{{ i.name }}</nuxt-link>
                             </span>
                         </b-breadcrumb-item>
                     </b-breadcrumb>

@@ -151,7 +151,7 @@ export default Vue.extend({
             "student-council",
             "extracurricular",
         ],
-        media: ["agenda", "prestations", "galleries"],
+        media: ["agenda", "news", "prestations", "galleries"],
         toggleA: false,
         toggleB: false,
         toggleC: false,
