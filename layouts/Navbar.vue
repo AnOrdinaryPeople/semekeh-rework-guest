@@ -99,6 +99,8 @@ export default Vue.extend({
         let nav = this.getId("app-nav")?.style,
             main = this.getId("app-main")?.style;
 
+        if (this.$route.query.q) (this as any).q = this.$route.query.q;
+
         if (document.documentElement.clientWidth > 1104)
             window.addEventListener("scroll", () => {
                 if (document.documentElement.clientWidth > 1104)

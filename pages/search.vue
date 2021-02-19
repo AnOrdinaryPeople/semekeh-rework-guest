@@ -64,6 +64,58 @@
                 >{{ $t('search_not_found', { type: $t('medias.agenda'), q: $route.query.q }) }}</h1>
             </div>
 
+            <div v-if="news.length">
+                <b-row no-gutters>
+                    <b-col>
+                        <hr class="bg-bpi-blue line" />
+                    </b-col>
+                    <b-col sm="3" lg="2" class="mx-2">
+                        <h3 class="text-bpi-blue text-center">{{ $t('medias.news') }}</h3>
+                    </b-col>
+                    <b-col>
+                        <hr class="bg-bpi-blue line" />
+                    </b-col>
+                </b-row>
+
+                <b-row id="news-list">
+                    <b-col v-for="(i, k) in lloop" :key="k" sm="12" md="6" lg="4" class="my-3">
+                        <nuxt-link class="news-card" :to="`/information-media/news/${i.slug}`">
+                            <b-aspect aspect="19:8">
+                                <div class="card agenda-card">
+                                    <div class="position-relative">
+                                        <div class="text-center">
+                                            <img
+                                                class="card-img"
+                                                fluid
+                                                :src="sauce('storage/' + i.banner)"
+                                                :alt="i.title"
+                                            />
+                                        </div>
+                                        <div class="agenda-footer px-4">
+                                            <span class="news-title">{{ i.title }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </b-aspect>
+                        </nuxt-link>
+                    </b-col>
+                </b-row>
+
+                <b-pagination
+                    v-if="news.length > 9"
+                    class="mt-3"
+                    v-model="currennt"
+                    :total-rows="news.length"
+                    :per-page="perPage"
+                    aria-controls="news-list"
+                />
+            </div>
+            <div v-else>
+                <h1
+                    class="text-center text-bpi-blue"
+                >{{ $t('search_not_found', { type: $t('medias.news'), q: $route.query.q }) }}</h1>
+            </div>
+
             <div v-if="pres.length">
                 <b-row no-gutters class="my-3">
                     <b-col>
@@ -123,11 +175,14 @@
             </div>
         </b-container>
         <b-container v-else class="my-5">
-            <b-row>
+            <b-row v-if="!warn">
                 <b-col v-for="(i, k) in 8" :key="k" sm="12" md="6" lg="4" class="mb-4">
                     <b-skeleton-img no-aspect height="230px" />
                 </b-col>
             </b-row>
+            <div v-else>
+                <h1 class="text-center text-bpi-blue">{{ $t('search_warn') }}</h1>
+            </div>
         </b-container>
     </div>
 </template>
@@ -144,30 +199,36 @@ import Vue from "vue";
 export default Vue.extend({
     data: () => ({
         agenda: [],
+        news: [],
         pres: [],
         current: 1,
         perPage: 9,
+        currennt: 1,
         currentt: 1,
         perPagee: 9,
         ready: false,
+        warn: false,
     }),
     async fetch() {
         await this.render();
     },
     methods: {
         async render() {
-            await (this as any).$axios
-                .get("search?q=" + this.$route.query.q)
-                .then((r: any) => {
-                    this.agenda = r.data.agenda;
-                    this.pres = r.data.pres;
+            if (this.$route.query.q)
+                await (this as any).$axios
+                    .get("search?q=" + this.$route.query.q)
+                    .then((r: any) => {
+                        this.agenda = r.data.agenda;
+                        this.news = r.data.news;
+                        this.pres = r.data.pres;
 
-                    (this as any).setMetaHead({
-                        title: this.$route.query.q,
+                        (this as any).setMetaHead({
+                            title: this.$route.query.q,
+                        });
+
+                        this.ready = true;
                     });
-
-                    this.ready = true;
-                });
+            else this.warn = true;
         },
     },
     computed: {
@@ -175,6 +236,12 @@ export default Vue.extend({
             return this.agenda.slice(
                 (this.current - 1) * this.perPage,
                 this.current * this.perPage
+            );
+        },
+        lloop(): any {
+            return this.news.slice(
+                (this.currennt - 1) * this.perPage,
+                this.currennt * this.perPage
             );
         },
         nani(): any {
